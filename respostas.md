@@ -376,4 +376,108 @@ Na execução acima, ele detectou que a branch remota `origin/main` estava à fr
 
 ---
 
+## Parte 2: GitFlow — Fluxo Profissional de Desenvolvimento
+
+### Questão 9: Inicializando o GitFlow
+
+#### b) Execução do `git flow init` e saída do terminal:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git flow init -d
+Using default branch names.
+
+Which branch should be used for bringing forth production releases?
+   - main
+Branch name for production releases: [main] 
+Branch name for "next release" development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Bugfix branches? [bugfix/] 
+Release branches? [release/] 
+Hotfix branches? [hotfix/] 
+Support branches? [support/] 
+Version tag prefix? [] 
+Hooks and filters directory? [C:/Users/Lenovo/Documents/7 PERIODO/ENGENHARIA DE QUALIDADE E CONFIABILIDADE/ATIVIDADE-11.06/lanchonete-web/.git/hooks] 
+```
+
+#### c) Execução do `git branch` e explicação sobre a nova branch:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git branch
+* develop
+  main
+```
+
+**Nova branch criada além da `main`:**
+A nova branch criada foi a **`develop`**.
+
+**Para que ela serve:**
+A branch `develop` funciona como a ramificação de integração para novos recursos. É nela que todo o desenvolvimento de novas funcionalidades (features) é integrado e testado. Ela reflete o estado do código com as últimas alterações prontas para a próxima liberação (próxima release). Em resumo, a `main` é mantida estável apenas com código de produção, enquanto a `develop` serve como a "linha de frente" do desenvolvimento contínuo.
+
+#### d) Envio da branch `develop` para o GitHub:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git push -u origin develop
+remote: Create a pull request for 'develop' on GitHub by visiting:        
+remote:      https://github.com/guilhermeDev1050/atividade-git-github/pull/new/develop        
+branch 'develop' set up to track 'origin/develop'.
+To https://github.com/guilhermeDev1050/atividade-git-github.git
+ * [new branch]      develop -> develop
+```
+
+---
+
+### Questão 10: Ciclo de Feature: Novo Cardápio Online
+
+#### a) Inicialização da Feature e branch atual:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git flow feature start cardapio-interativo
+Switched to a new branch 'feature/cardapio-interativo'
+```
+**Branch em que estamos agora:** `feature/cardapio-interativo`
+
+#### b) Edição do arquivo `cardapio.js` e commits:
+Realizamos dois commits durante o desenvolvimento da funcionalidade:
+1. **Primeiro Commit:** `feat: adiciona array de produtos do cardapio`
+2. **Segundo Commit:** `feat: implementa exibicao do cardapio no console`
+
+#### c) Finalização da Feature:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git flow feature finish cardapio-interativo
+Switched to branch 'develop'
+Merge made by the 'ort' strategy.
+ cardapio.js | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+ Deleted branch feature/cardapio-interativo (was 987749c).
+```
+
+**O que o comando fez automaticamente:**
+1. Mesclou a branch da feature (`feature/cardapio-interativo`) na branch de integração (`develop`).
+2. Deletou a branch da feature local (`feature/cardapio-interativo`).
+3. Retornou o diretório de trabalho ativo (checkout) para a branch `develop`.
+
+**Para qual branch o código foi enviado:**
+O código foi mesclado localmente para a branch **`develop`**.
+
+#### d) Histórico gráfico (`git log --oneline --graph`) e descrição do fluxo:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git log --oneline --graph -n 5
+*   03b088b Merge branch 'feature/cardapio-interativo' into develop
+|\  
+| * 987749c feat: implementa exibicao do cardapio no console
+| * 59d834d feat: adiciona array de produtos do cardapio
+|/  
+* 068daf1 chore: atualiza respostas da questao 9
+```
+
+**Descrição visual do fluxo:**
+O fluxo de desenvolvimento da feature começou a partir da branch `develop` no commit `068daf1`. Uma nova linha de desenvolvimento (`feature/cardapio-interativo`) foi ramificada, onde foram adicionados os commits de desenvolvimento `59d834d` e `987749c`. Por fim, ao rodar o `finish`, o Git realizou um merge commit `03b088b` que uniu a branch de feature de volta à branch `develop`, encerrando o ciclo e apagando a branch temporária.
+
+---
+
+
 
