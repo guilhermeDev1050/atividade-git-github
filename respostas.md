@@ -479,5 +479,58 @@ O fluxo de desenvolvimento da feature começou a partir da branch `develop` no c
 
 ---
 
+### Questão 11: Ciclo de Release: Preparando a Versão 1.0
+
+#### a) Inicialização da Release:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git flow release start 1.0.0
+Switched to a new branch 'release/1.0.0'
+```
+
+**Em qual branch o fluxo de release é criado:**
+A branch criada é a **`release/1.0.0`**.
+
+**A partir de qual branch ela nasce:**
+Ela nasce a partir da branch **`develop`** (pois contém as novas features integradas e prontas para serem preparadas para produção).
+
+#### b) Ajustes na branch de release e commit:
+Atualizamos o arquivo `README.md` com as instruções de uso do projeto e adicionamos informações de contato no rodapé do `index.html`. Em seguida, realizamos o commit:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git add .
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git commit -m "chore: prepara release v1.0.0"
+[release/1.0.0 81ac450] chore: prepara release v1.0.0
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+```
+
+#### c) Finalização da Release:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git flow release finish -m "Release 1.0.0" 1.0.0
+Switched to branch 'main'
+Merge made by the 'ort' strategy.
+Switched to branch 'develop'
+Merge made by the 'ort' strategy.
+Deleted branch release/1.0.0 (was 81ac450).
+```
+
+**O que ocorreu com as branches `main` e `develop` após esse comando:**
+- **`main`:** Recebeu a mesclagem da branch de release (`release/1.0.0`), incorporando as novas funcionalidades e ajustes finos. Foi gerada a tag de versão `1.0.0` apontando para esse commit de merge na `main`.
+- **`develop`:** Recebeu a mesclagem da branch de release (`release/1.0.0`) de volta (back-merge), garantindo que quaisquer ajustes e correções feitos de última hora na branch de release fossem integrados no fluxo contínuo de desenvolvimento.
+- **`release/1.0.0`:** Foi excluída localmente.
+
+#### d) Execução do `git tag` e papel da tag no GitFlow:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git tag
+1.0.0
+```
+
+**Função de uma tag no contexto do GitFlow:**
+Uma tag serve como um **marcador de referência estático (um apelido amigável)** para um commit específico no histórico (geralmente na branch `main`). No GitFlow, as tags identificam marcos importantes e versões de lançamento oficiais do software (como releases estáveis e prontas para produção: ex. `1.0.0`, `1.0.1`, `2.0.0`). Elas facilitam a recuperação exata de qualquer versão histórica lançada do sistema sem precisar lidar com os hashes de commits do Git.
+
+---
+
+
 
 
