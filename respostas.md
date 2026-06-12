@@ -531,6 +531,74 @@ Uma tag serve como um **marcador de referência estático (um apelido amigável)
 
 ---
 
+### Questão 12: Ciclo de Hotfix: Corrigindo Bug em Produção
+
+#### a) Inicialização do Hotfix e por que ele nasce da branch `main`:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git flow hotfix start correcao-titulo
+Switched to a new branch 'hotfix/correcao-titulo'
+```
+
+**Por que o hotfix nasce da `main` e não da `develop`:**
+A branch `main` reflete exatamente o código que está rodando em **produção (ambiente ativo que os clientes acessam)**. A branch `develop` contém novos recursos inacabados que ainda não foram testados ou aprovados para publicação. 
+
+Como um hotfix é uma **correção urgente de bugs críticos em produção**, ela deve ser criada diretamente a partir do código estável da `main`, permitindo corrigir o problema rapidamente e publicá-lo de imediato sem levar junto as alterações incompletas/instáveis da branch `develop`.
+
+#### b) Correção do erro no `index.html` e commit:
+Corrigimos o título da página no `index.html` e geramos o commit de correção:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git add index.html
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git commit -m "fix: corrige titulo da pagina principal"
+[hotfix/correcao-titulo 7a34dfc] fix: corrige titulo da pagina principal
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+```
+
+#### c) Finalização do hotfix, histórico completo e branches mescladas:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git flow hotfix finish correcao-titulo
+Switched to branch 'main'
+Merge made by the 'ort' strategy.
+Switched to branch 'develop'
+Merge made by the 'ort' strategy.
+Deleted branch hotfix/correcao-titulo (was 7a34dfc).
+```
+
+**Saída do comando `git log --oneline --all --graph`:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git log --oneline --all --graph -n 10
+*   d3b28d7 Merge tag 'correcao-titulo' into develop
+|\  
+| *   5c8df4e Merge branch 'hotfix/correcao-titulo'
+| |\  
+| | * 7a34dfc fix: corrige titulo da pagina principal
+| |/  
+* | 3977cbb chore: atualiza respostas da questao 11
+* | 13f9ff9 Merge tag '1.0.0' into develop
+|\| 
+| *   688d461 Merge branch 'release/1.0.0'
+```
+
+**Para quais branches o hotfix foi mesclado:**
+O hotfix foi mesclado para as duas branches principais:
+1. **`main`:** Para atualizar imediatamente o código de produção com a correção do bug.
+2. **`develop`:** Para garantir que a correção não seja perdida no desenvolvimento futuro e seja integrada no fluxo de trabalho contínuo.
+
+#### d) Número da versão correto após esse hotfix segundo o SemVer e justificativa:
+O número de versão correto é **`1.0.1`**.
+
+**Justificativa:**
+De acordo com a especificação do **Versionamento Semântico (SemVer 2.0.0)**, o formato da versão é composto por três números inteiros: `MAJOR.MINOR.PATCH` (ex: `1.0.0`):
+1. Incrementa-se o **MAJOR** ao realizar alterações incompatíveis com versões anteriores (breaking changes).
+2. Incrementa-se o **MINOR** ao adicionar novas funcionalidades de forma retrocompatível.
+3. Incrementa-se o **PATCH** ao realizar correções de bugs retrocompatíveis.
+
+Como o hotfix consiste exclusivamente em uma **correção de bug** pontual e retrocompatível no título da página principal, incrementamos apenas o número do **PATCH**, passando a versão de `1.0.0` para `1.0.1`.
+
+---
+
+
 
 
 
