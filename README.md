@@ -1,6 +1,6 @@
-# Lanchonete do Bairro
+# Chapa Quente Burguer
 
-Este projeto é um site simples para a Lanchonete do Bairro, desenvolvido para a disciplina de Engenharia da Qualidade e Confiabilidade da UniRV.
+Este projeto é um site simples para o Chapa Quente Burguer, desenvolvido para a disciplina de Engenharia da Qualidade e Confiabilidade da UniRV.
 
 ## Como Usar o Projeto
 1. Clone este repositório em sua máquina local.

@@ -1,4 +1,4 @@
-// cardapio.js - Lógica interativa da Lanchonete do Bairro
+// cardapio.js - Lógica interativa do Chapa Quente Burguer
 
 console.log("Cardápio carregado com sucesso!");
 
