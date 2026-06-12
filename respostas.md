@@ -376,4 +376,56 @@ Na execução acima, ele detectou que a branch remota `origin/main` estava à fr
 
 ---
 
+## Parte 2: GitFlow — Fluxo Profissional de Desenvolvimento
+
+### Questão 9: Inicializando o GitFlow
+
+#### b) Execução do `git flow init` e saída do terminal:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git flow init -d
+Using default branch names.
+
+Which branch should be used for bringing forth production releases?
+   - main
+Branch name for production releases: [main] 
+Branch name for "next release" development: [develop] 
+
+How to name your supporting branch prefixes?
+Feature branches? [feature/] 
+Bugfix branches? [bugfix/] 
+Release branches? [release/] 
+Hotfix branches? [hotfix/] 
+Support branches? [support/] 
+Version tag prefix? [] 
+Hooks and filters directory? [C:/Users/Lenovo/Documents/7 PERIODO/ENGENHARIA DE QUALIDADE E CONFIABILIDADE/ATIVIDADE-11.06/lanchonete-web/.git/hooks] 
+```
+
+#### c) Execução do `git branch` e explicação sobre a nova branch:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git branch
+* develop
+  main
+```
+
+**Nova branch criada além da `main`:**
+A nova branch criada foi a **`develop`**.
+
+**Para que ela serve:**
+A branch `develop` funciona como a ramificação de integração para novos recursos. É nela que todo o desenvolvimento de novas funcionalidades (features) é integrado e testado. Ela reflete o estado do código com as últimas alterações prontas para a próxima liberação (próxima release). Em resumo, a `main` é mantida estável apenas com código de produção, enquanto a `develop` serve como a "linha de frente" do desenvolvimento contínuo.
+
+#### d) Envio da branch `develop` para o GitHub:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git push -u origin develop
+remote: Create a pull request for 'develop' on GitHub by visiting:        
+remote:      https://github.com/guilhermeDev1050/atividade-git-github/pull/new/develop        
+branch 'develop' set up to track 'origin/develop'.
+To https://github.com/guilhermeDev1050/atividade-git-github.git
+ * [new branch]      develop -> develop
+```
+
+---
+
 
