@@ -251,3 +251,49 @@ O arquivo `promocoes.html` **desapareceu** do diretório de trabalho local ao mu
 Isso ocorre porque o arquivo foi criado e commitado na branch isolada `feature/pagina-promocoes`. A branch `main` ainda se encontra no estado do seu último commit próprio (onde o arquivo `promocoes.html` não existia). O Git atualiza dinamicamente os arquivos na pasta física para refletir exatamente o estado do commit da branch em que estamos posicionados no momento.
 
 ---
+
+### Questão 6: Integrando Branches com git merge
+
+#### a) Execução do merge na branch `main`:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git merge feature/pagina-promocoes -m "Merge branch 'feature/pagina-promocoes'"
+Merge made by the 'ort' strategy.
+ promocoes.html | 232 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 232 insertions(+)
+ create mode 100644 promocoes.html
+```
+
+#### b) Identificação da estratégia de merge:
+A saída indica que o Git utilizou a estratégia **ort** (`Merge made by the 'ort' strategy.`).
+*Nota:* Em repositórios onde a branch `main` não possui commits adicionais após a ramificação, o Git utilizaria a estratégia de **Fast-forward** (apenas movendo o ponteiro da `main` para a frente). No entanto, como realizamos commits de respostas na branch `main`, ocorreu uma divergência histórica e o Git realizou um merge de três vias clássico utilizando o algoritmo moderno **ORT** (padrão do Git para resoluções eficientes de mesclagem).
+
+#### c) Execução do `git log --oneline --graph` e descrição visual do histórico após o merge:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git log --oneline --graph -n 10
+*   0774765 Merge branch 'feature/pagina-promocoes'
+|\  
+| * 5372708 feat: adiciona pagina de promocoes
+* | 85b3e31 chore: atualiza respostas da questao 5
+|/  
+* ff3ce4f chore: atualiza respostas da questao 4
+...
+```
+
+**Descrição visual do histórico:**
+O histórico agora mostra uma ramificação que se abre a partir do commit `24c79fc`. Do lado esquerdo, temos a linha de commits da branch `main` (incluindo o commit de respostas `85b3e31`). Do lado direito, temos a ramificação da feature com o commit `5372708`. No topo, as duas linhas se unem no commit de merge `0774765`, unificando a história.
+
+#### d) Deleção da branch de feature e explicação da boa prática:
+**Comando executado:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git branch -d feature/pagina-promocoes
+Deleted branch feature/pagina-promocoes (was 5372708).
+```
+
+**Por que deletar branches concluídas é uma boa prática:**
+1. **Organização do Repositório:** Evita o acúmulo desnecessário de branches antigas na lista local e remota, mantendo o repositório limpo e legível.
+2. **Evita Confusões:** Reduz a chance de outro desenvolvedor trabalhar acidentalmente em uma branch obsoleta ou tentar mesclar código desatualizado.
+3. **Foco no Desenvolvimento Ativo:** Facilita a visualização rápida de quais funcionalidades ainda estão ativamente em desenvolvimento e quais já foram finalizadas e consolidadas na branch principal.
+
+---
