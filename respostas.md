@@ -337,3 +337,43 @@ O `git revert` é muito mais seguro porque ele **não altera o histórico existe
 
 ---
 
+### Questão 8: Repositório Remoto com GitHub
+
+#### a) Criação do repositório no GitHub:
+O repositório público foi criado no GitHub sob a URL: `https://github.com/guilhermeDev1050/atividade-git-github.git`.
+
+#### b) Conexão do repositório local ao remoto e push:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git push -u origin main
+branch 'main' set up to track 'origin/main'.
+To https://github.com/guilhermeDev1050/atividade-git-github.git
+ * [new branch]      main -> main
+```
+*Nota:* Como o repositório foi inicialmente clonado diretamente da URL fornecida, o vínculo do controle remoto `origin` já estava estabelecido por padrão.
+
+#### c) Significado da flag `-u` no `git push`:
+A flag `-u` (abreviação de `--set-upstream`) serve para associar (vincular) a branch local atual à sua correspondente no repositório remoto. 
+
+Ao fazer isso uma única vez, o Git configura um rastreamento permanente entre a branch local (`main`) e a branch remota (`origin/main`). Nas próximas vezes em que for necessário enviar ou puxar atualizações dessa branch, basta executar simplesmente `git push` ou `git pull` sem a necessidade de especificar o nome do servidor remoto e da branch correspondente.
+
+#### d) Alteração remota simulada e execução do `git pull`:
+**Saída do comando `git pull`:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git pull
+From https://github.com/guilhermeDev1050/atividade-git-github
+   295455d..f760fa3  main       -> origin/main
+Updating 295455d..f760fa3
+Fast-forward
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+```
+
+**O que o `git pull` fez:**
+O comando `git pull` é a junção de dois comandos do Git: `git fetch` (que baixa as referências e commits mais recentes do repositório remoto sem alterar os arquivos locais) e `git merge` (que mescla esses commits baixados na branch ativa local). 
+
+Na execução acima, ele detectou que a branch remota `origin/main` estava à frente por 1 commit (devido à modificação do arquivo `README.md` feita diretamente no GitHub). O Git baixou esses dados e aplicou uma estratégia de **Fast-forward**, movendo o ponteiro da branch local `main` para frente e atualizando o arquivo `README.md` no diretório físico com a alteração remota.
+
+---
+
+
