@@ -9,6 +9,15 @@ const itensCardapio = [
     { id: 3, nome: "Combo Família", preco: 45.90, categoria: "Combos" }
 ];
 
+// Carregar e listar itens no console ao carregar a página
+function listarItensConsole() {
+    console.log("--- NOSSAS OPÇÕES ---");
+    itensCardapio.forEach(item => {
+        console.log(`[${item.categoria}] ${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}`);
+    });
+}
+listarItensConsole();
+
 function fazerPedido(itemNome) {
     alert(`Pedido recebido! Você escolheu: ${itemNome}. Seu lanche já está sendo preparado! 🍔🚀`);
 }
