@@ -207,3 +207,47 @@ Em um projeto profissional, mensagens de commit claras e descritivas são crucia
 4. **Documentação Histórica:** Funciona como uma documentação viva do projeto, explicando não apenas o "o que" mudou, mas o "porquê" mudou.
 
 ---
+
+### Questão 5: Trabalhando com Branches: Nova Funcionalidade
+
+#### a) Criação e mudança para a branch:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git checkout -b feature/pagina-promocoes
+Switched to a new branch 'feature/pagina-promocoes'
+```
+
+#### b) Criação de `promocoes.html` e commit na branch:
+Comandos executados:
+```powershell
+git add promocoes.html
+git commit -m "feat: adiciona pagina de promocoes"
+[feature/pagina-promocoes 5372708] feat: adiciona pagina de promocoes
+ 1 file changed, 232 insertions(+)
+ create mode 100644 promocoes.html
+```
+
+#### c) Execução do `git branch` e explicação sobre o asterisco `*`:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git branch
+* feature/pagina-promocoes
+  main
+```
+
+**Explicação sobre o asterisco `*`:**
+O asterisco `*` ao lado do nome de uma branch indica qual é a **branch atualmente ativa (checkout ativo)** no diretório de trabalho. Quaisquer modificações e commits realizados a partir desse momento serão registrados nessa branch ativa.
+
+#### d) Retorno para a branch `main` e verificação da visibilidade do arquivo:
+**Comando executado:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git checkout main
+Switched to branch 'main'
+```
+
+**O que aconteceu com o arquivo `promocoes.html` e por quê:**
+O arquivo `promocoes.html` **desapareceu** do diretório de trabalho local ao mudar de volta para a branch `main`. 
+
+Isso ocorre porque o arquivo foi criado e commitado na branch isolada `feature/pagina-promocoes`. A branch `main` ainda se encontra no estado do seu último commit próprio (onde o arquivo `promocoes.html` não existia). O Git atualiza dinamicamente os arquivos na pasta física para refletir exatamente o estado do commit da branch em que estamos posicionados no momento.
+
+---
