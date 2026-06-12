@@ -1,1 +1,65 @@
-<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanchonete do Bairro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">🍔 Lanchonete do Bairro</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="#cardapio">Cardápio</a></li>
+                <li><a href="promocoes.html">Promoções</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Bem-vindo à Lanchonete do Bairro</h1>
+                <p>Os melhores lanches com ingredientes selecionados e entrega super rápida!</p>
+                <a href="#cardapio" class="btn btn-primary">Ver Cardápio →</a>
+            </div>
+        </section>
+
+        <section id="cardapio">
+            <h2>Nosso Cardápio</h2>
+            <div class="cardapio-grid">
+                <div class="card-item">
+                    <div class="card-img-placeholder">🍔</div>
+                    <h3>X-Burguer</h3>
+                    <p class="price">R$ 18,90</p>
+                    <button class="btn btn-order" onclick="fazerPedido('X-Burguer')">Pedir</button>
+                </div>
+
+                <div class="card-item">
+                    <div class="card-img-placeholder">🥓</div>
+                    <h3>X-Bacon</h3>
+                    <p class="price">R$ 21,90</p>
+                    <button class="btn btn-order" onclick="fazerPedido('X-Bacon')">Pedir</button>
+                </div>
+
+                <div class="card-item">
+                    <div class="card-img-placeholder">📦</div>
+                    <h3>Combo Família</h3>
+                    <p class="price">R$ 45,90</p>
+                    <button class="btn btn-order" onclick="fazerPedido('Combo Família')">Pedir</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Lanchonete do Bairro</p>
+    </footer>
+
+    <script src="cardapio.js"></script>
+</body>
+</html>
