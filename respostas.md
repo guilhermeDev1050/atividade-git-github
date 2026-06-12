@@ -160,3 +160,50 @@ git commit -m "feat: adiciona estrutura basica do HTML"
 ```
 
 ---
+
+### Questão 4: Histórico de Versões com git log
+
+#### a) Execução do `git log` e identificação dos campos de cada commit:
+**Saída do comando (histórico recente):**
+```powershell
+commit 24c79fcd0353bf5fa9633484a92446c239381b10
+Author: guilhermeDev1050 <guilhermejunco@hotmail.com>
+Date:   Thu Jun 11 21:14:53 2026 -0300
+
+    feat: adiciona comportamento base ao cardapio
+
+commit 3b51404de142785b4707ddc9d19fec6dbb61b1f9
+Author: guilhermeDev1050 <guilhermejunco@hotmail.com>
+Date:   Thu Jun 11 21:14:34 2026 -0300
+
+    style: adiciona estilos basicos do site
+```
+
+**Campos identificados no último commit (`24c79fc`):**
+- **Hash completo:** `24c79fcd0353bf5fa9633484a92446c239381b10` (o identificador SHA-1 único do commit).
+- **Autor (Author):** `guilhermeDev1050 <guilhermejunco@hotmail.com>` (quem realizou a alteração).
+- **Data (Date):** `Thu Jun 11 21:14:53 2026 -0300` (quando o commit foi gerado).
+- **Mensagem:** `feat: adiciona comportamento base ao cardapio` (explicação breve do que foi feito).
+
+#### b) Execução do `git log --oneline --graph` e significado do caractere `*`:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git log --oneline --graph
+* 24c79fc feat: adiciona comportamento base ao cardapio
+* 3b51404 style: adiciona estilos basicos do site
+* f2e0da2 chore: atualiza respostas das questoes 1 a 3
+* eaa1739 feat: adiciona estrutura basica do HTML
+* 1d2dd60 feat: estrutura inicial do projeto
+```
+
+**Significado do caractere `*`:**
+O caractere `*` (asterisco) na saída gráfica representa um **nó de commit** na linha do tempo (ramificação/branch) do histórico. Ele indica a posição daquele commit específico no fluxo linear ou ramificado do repositório.
+
+#### c) Importância de mensagens de commit claras e descritivas:
+Em um projeto profissional, mensagens de commit claras e descritivas são cruciais pelas seguintes razões:
+1. **Rastreabilidade e Depuração:** Permite que desenvolvedores identifiquem rapidamente quando e por que uma alteração ou bug foi introduzido no sistema, facilitando a correção (`git revert` ou `git bisect`).
+2. **Colaboração Eficiente:** Membros da equipe podem acompanhar a evolução do projeto sem a necessidade de ler o código de cada commit para entender o que foi feito.
+3. **Geração Automatizada de Changelogs:** Facilita a criação automática de notas de lançamento (Release Notes) a partir do histórico de commits (especialmente usando padrões como o *Conventional Commits*).
+4. **Documentação Histórica:** Funciona como uma documentação viva do projeto, explicando não apenas o "o que" mudou, mas o "porquê" mudou.
+
+---
