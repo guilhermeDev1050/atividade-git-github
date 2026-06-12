@@ -297,3 +297,43 @@ Deleted branch feature/pagina-promocoes (was 5372708).
 3. **Foco no Desenvolvimento Ativo:** Facilita a visualização rápida de quais funcionalidades ainda estão ativamente em desenvolvimento e quais já foram finalizadas e consolidadas na branch principal.
 
 ---
+
+### Questão 7: Desfazendo Erros com git revert
+
+#### a) Commit com alteração incorreta no `style.css`:
+Comando executado:
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git add style.css
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git commit -m "style: adiciona cor de fundo incorreta"
+[main 3efad02] style: adiciona cor de fundo incorreta
+ 1 file changed, 3 insertions(+)
+```
+
+#### b) Identificação do hash do commit ruim com `git log --oneline`:
+**Saída do comando:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git log --oneline -n 3
+3efad02 style: adiciona cor de fundo incorreta
+ec223b2 chore: atualiza respostas da questao 6
+0774765 Merge branch 'feature/pagina-promocoes'
+```
+**Hash identificado:** `3efad02`
+
+#### c) Reversão do commit e explicações conceituais:
+**Comando executado:**
+```powershell
+PS C:\Users\Lenovo\Documents\7 PERIODO\ENGENHARIA DE QUALIDADE E CONFIABILIDADE\ATIVIDADE-11.06\lanchonete-web> git revert 3efad02 --no-edit
+[main c49d27f] Revert "style: adiciona cor de fundo incorreta"
+ Date: Thu Jun 11 21:23:25 2026 -0300
+ 1 file changed, 3 deletions(-)
+```
+
+**Diferença entre `git revert` e `git reset`:**
+- **`git revert`:** Cria um **novo commit** no histórico contendo exatamente a alteração inversa da do commit especificado (ou seja, ele "desfaz fazendo de novo"). Ele não apaga o commit ruim do histórico, preservando a linha do tempo intacta.
+- **`git reset`:** Move o ponteiro da branch atual de volta para um commit anterior, **reescrevendo/apagando** o histórico a partir dali. Dependendo dos parâmetros (`--soft`, `--mixed`, `--hard`), ele também descarta ou altera as modificações no diretório de trabalho local.
+
+**Por que o `revert` é mais seguro em projetos colaborativos?**
+O `git revert` é muito mais seguro porque ele **não altera o histórico existente** (ele é puramente aditivo). Se usarmos `git reset` em commits que já foram enviados para o repositório remoto e compartilhados com outros desenvolvedores, criaremos divergências graves de histórico que exigirão um push forçado (`git push --force`), podendo sobrescrever o trabalho de outros membros da equipe e causar perda de dados. O `revert` permite que todos recebam a alteração de desfazimento normalmente através de um simples `git pull`.
+
+---
+
