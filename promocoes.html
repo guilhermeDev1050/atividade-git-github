@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoções - Lanchonete do Bairro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for promotions page matching the wireframe */
+        .promo-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        aside.categories-sidebar {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            height: fit-content;
+        }
+
+        aside.categories-sidebar h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .category-filter {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .filter-item input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .promo-header {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .promo-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+
+        .promo-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .promo-card {
+            background: #ffffff;
+            border-radius: var(--border-radius);
+            padding: 2rem 1.5rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .promo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .promo-badge {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 800;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .new-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #2e7d32;
+            margin-bottom: 0.5rem;
+        }
+
+        .expiry-date {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .promo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">🍔 Lanchonete do Bairro</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#cardapio">Cardápio</a></li>
+                <li><a href="promocoes.html" class="active">Promoções</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="promo-header">
+        <h1>Promoções do Dia</h1>
+    </div>
+
+    <main class="promo-container">
+        <aside class="categories-sidebar">
+            <h3>Categorias</h3>
+            <div class="category-filter">
+                <label class="filter-item">
+                    <input type="checkbox" checked> Lanches
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" checked> Bebidas
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" checked> Combos
+                </label>
+                <label class="filter-item">
+                    <input type="checkbox" checked> Sobremesas
+                </label>
+            </div>
+        </aside>
+
+        <section class="promo-grid">
+            <div class="promo-card">
+                <span class="promo-badge">DESCONTO</span>
+                <div class="card-img-placeholder">🍔🥓</div>
+                <h3>Combo X-Bacon</h3>
+                <p class="old-price">De: R$ 25,00</p>
+                <p class="new-price">Por: R$ 18,90</p>
+                <p class="expiry-date">Válido até: 30/06</p>
+                <button class="btn btn-order" onclick="aproveitarPromo('Combo X-Bacon')">Aproveitar</button>
+            </div>
+
+            <div class="promo-card">
+                <span class="promo-badge">OFERTA</span>
+                <div class="card-img-placeholder">🍗</div>
+                <h3>Frango Grelhado</h3>
+                <p class="old-price">De: R$ 20,00</p>
+                <p class="new-price">Por: R$ 14,90</p>
+                <p class="expiry-date">Válido até: 30/06</p>
+                <button class="btn btn-order" onclick="aproveitarPromo('Frango Grelhado')">Aproveitar</button>
+            </div>
+
+            <div class="promo-card">
+                <span class="promo-badge">SUCESSO</span>
+                <div class="card-img-placeholder">🥤🍦</div>
+                <h3>Milkshake 500ml</h3>
+                <p class="old-price">De: R$ 15,00</p>
+                <p class="new-price">Por: R$ 10,90</p>
+                <p class="expiry-date">Válido até: 30/06</p>
+                <button class="btn btn-order" onclick="aproveitarPromo('Milkshake 500ml')">Aproveitar</button>
+            </div>
+
+            <div class="promo-card">
+                <span class="promo-badge">PORÇÃO</span>
+                <div class="card-img-placeholder">🍟</div>
+                <h3>Batata Frita M</h3>
+                <p class="old-price">De: R$ 12,00</p>
+                <p class="new-price">Por: R$ 8,90</p>
+                <p class="expiry-date">Válido até: 30/06</p>
+                <button class="btn btn-order" onclick="aproveitarPromo('Batata Frita M')">Aproveitar</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Lanchonete do Bairro</p>
+    </footer>
+
+    <script>
+        function aproveitarPromo(promoNome) {
+            alert(`Promoção Aproveitada! Você adicionou ${promoNome} ao carrinho com desconto! 💸🤩`);
+        }
+    </script>
+</body>
+</html>
